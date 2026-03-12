@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =====================================================
+       PAGE TITLE — replace with your name and role
+       ===================================================== -->
+  <title>Noureddine Mazzene — Designer &amp; Creative</title>
+  <meta name="description" content="Portfolio of [Your Name], a designer focused on branding, visual identity, and creative direction." />
+
+  <!-- =====================================================
+       FONTS — loaded from Google Fonts
+       Barlow Condensed: bold display headings
+       DM Sans: clean body text
+       To change fonts, update these links AND the
+       --font-display / --font-body variables in style.css
+       ===================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HEADER / NAVIGATION
+       — Fixed to top, darkens on scroll (via JS)
+       ===================================================== -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header__inner">
+
+        <!-- Logo / Name — replace "Your Name" -->
+        <a href="index.html" class="header__logo">
+          Nour<span>Mazzene</span>
+        </a>
+
+        <!-- Desktop navigation links -->
+        <nav class="nav" aria-label="Main navigation">
+
+          <!-- Hamburger button — visible on mobile only -->
+          <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul class="nav__list">
+            <!-- Update href anchors if you rename section IDs -->
+            <li><a href="#about"    class="nav__link">About</a></li>
+            <li><a href="#work"     class="nav__link">Work</a></li>
+            <li><a href="#contact"  class="nav__link">Contact</a></li>
+            <!-- Optional: link to resume PDF -->
+            <!-- <li><a href="images/placeholders/resume.pdf" class="nav__link" target="_blank">Résumé</a></li> -->
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+  <!-- END HEADER -->
+
+
+  <!-- =====================================================
+       HERO SECTION
+       — Full viewport opening statement
+       ===================================================== -->
+  <section class="hero section" id="hero">
+    <div class="container">
+
+      <!-- Decorative background word — tasteful, low opacity -->
+      <!-- Replace "PORTFOLIO" with any word you want, or remove this div entirely -->
+      <div class="hero__bg-text" aria-hidden="true">Portfolio</div>
+
+      <div class="hero__content">
+
+        <!-- Small eyebrow label — replace with your discipline -->
+        <p class="text-label hero__label reveal">
+          Designer &amp; Creative — Based in Montreal
+        </p>
+
+        <!-- Main headline — replace with your own statement -->
+        <!-- The <em> tag creates the outlined "ghost" text effect -->
+        <h1 class="hero__title reveal">
+          Making<br>
+          <em>Ideas</em><br>
+          Visible
+        </h1>
+
+        <!-- Short tagline — 1–2 sentences max -->
+        <p class="text-body hero__description reveal">
+          <!-- Replace this text later -->
+          A design student building work at the intersection of identity,
+          visual storytelling, and conceptual thinking. Currently open to
+          collaborations and internships.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="hero__cta reveal">
+          <a href="#work" class="btn btn--primary">View Work</a>
+          <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+        </div>
+
+      </div><!-- end .hero__content -->
+
+      <!-- Scroll hint — remove if you prefer a cleaner hero -->
+      <div class="hero__scroll-hint" aria-hidden="true">
+        <span class="hero__scroll-line"></span>
+        <span class="text-label">Scroll</span>
+      </div>
+
+    </div>
+  </section>
+  <!-- END HERO -->
+
+
+  <!-- =====================================================
+       ABOUT SECTION
+       ===================================================== -->
+  <section class="about section section--alt" id="about">
+    <div class="container">
+      <div class="about__grid">
+
+        <!-- LEFT COLUMN — sticky heading + stats -->
+        <div class="about__left">
+
+          <!-- Eyebrow label -->
+          <p class="text-label reveal">About Me</p>
+
+          <!-- Section heading -->
+          <h2 class="text-heading about__heading reveal">
+            Driven<br>by<br>Design
+          </h2>
+
+          <!-- Stats — replace numbers and labels -->
+          <div class="about__stats reveal">
+            <div class="about__stat">
+              <!-- Replace number -->
+              <div class="about__stat-number">9+</div>
+              <div class="about__stat-label">Years Designing</div>
+            </div>
+            <div class="about__stat">
+              <!-- Replace number -->
+              <div class="about__stat-number">100+</div>
+              <div class="about__stat-label">Projects Completed</div>
+            </div>
+            <div class="about__stat">
+              <!-- Replace number -->
+              <div class="about__stat-number">5</div>
+              <div class="about__stat-label">Disciplines</div>
+            </div>
+            <div class="about__stat">
+              <!-- Replace number or remove -->
+              <div class="about__stat-number">∞</div>
+              <div class="about__stat-label">Ideas in Progress</div>
+            </div>
+          </div>
+
+        </div><!-- end .about__left -->
+
+        <!-- RIGHT COLUMN — bio text + skills -->
+        <div class="about__right">
+
+          <!-- Bio paragraphs — replace all text later -->
+          <p class="text-body reveal">
+            I am a 3rd design student studying Design at Concordia University.
+            My practice spans brand identity, print, digital, and motion design —
+            united by a belief that strong concepts and sharp execution are
+            non-negotiable.
+          </p>
+
+          <p class="text-body reveal">
+            I am drawn to work that communicates with confidence: design that
+            knows exactly what it is and why it exists. Whether working on a
+            full brand system or a single typographic poster, I bring the same
+            level of intentionality and craft to every project.
+          </p>
+
+          <p class="text-body reveal">
+            <!-- Replace this text later — add a personal detail or philosophy -->
+            Outside of studio practice, I am interested in Gaming, Film & Music
+            which consistently inform the way I approach visual problems.
+          </p>
+
+          <!-- Tools / skills tags — add or remove tags as needed -->
+          <div class="about__tags reveal">
+            <!-- Duplicate or remove individual tags below -->
+            <span class="about__tag">Brand Identity</span>
+            <span class="about__tag">Typography</span>
+            <span class="about__tag">Art Direction</span>
+            <span class="about__tag">Motion Design</span>
+            <span class="about__tag">Packaging</span>
+            <span class="about__tag">Web Design</span>
+            <span class="about__tag">Figma</span>
+            <span class="about__tag">Adobe CC</span>
+            <span class="about__tag">After Effects</span>
+          </div>
+
+        </div><!-- end .about__right -->
+
+      </div>
+    </div>
+  </section>
+  <!-- END ABOUT -->
+
+
+  <!-- =====================================================
+       SELECTED WORK / PROJECTS SECTION
+       ===================================================== -->
+  <section class="projects section" id="work">
+    <div class="container">
+
+      <!-- Section header row -->
+      <div class="projects__header reveal">
+        <div>
+          <p class="text-label">Selected Works</p>
+          <h2 class="text-heading" style="margin-top: 0.5rem;">Projects</h2>
+        </div>
+        <!-- Optional: link to a full archive page if you build one later -->
+        <!-- <a href="archive.html" class="btn btn--ghost">View All</a> -->
+      </div>
+
+      <!-- Projects list -->
+      <!-- ============================================
+           HOW TO ADD MORE PROJECTS:
+           1. Duplicate one entire <a class="project-card"> block
+           2. Update the title, category, year, and number
+           3. Update href to point to the correct project file
+              e.g. href="project-branding.html"
+           ============================================ -->
+      <div class="projects__list reveal-stagger">
+
+        <!-- Project Card 1 — Branding -->
+        <!-- Duplicate this block to add more projects -->
+        <a href="project-template.html" class="project-card reveal">
+          <span class="project-card__number">01</span>
+          <div class="project-card__info">
+            <!-- Replace project title -->
+            <h3 class="project-card__title">Project</h3>
+            <!-- Replace category and year -->
+            <p class="project-card__meta">description &mdash; 2025</p>
+          </div>
+          <span class="project-card__arrow">→</span>
+        </a>
+
+        <!-- Project Card 2 — Website Design -->
+        <a href="project-template.html" class="project-card reveal">
+          <span class="project-card__number">02</span>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Project</h3>
+            <p class="project-card__meta">description &mdash; 2025</p>
+          </div>
+          <span class="project-card__arrow">→</span>
+        </a>
+
+        <!-- Project Card 3 — Packaging -->
+        <a href="project-template.html" class="project-card reveal">
+          <span class="project-card__number">03</span>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Project</h3>
+            <p class="project-card__meta">description &mdash; 2025</p>
+          </div>
+          <span class="project-card__arrow">→</span>
+        </a>
+
+        <!-- Project Card 4 — Motion Design -->
+        <a href="project-template.html" class="project-card reveal">
+          <span class="project-card__number">04</span>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Project</h3>
+            <p class="project-card__meta">description &mdash; 2025</p>
+          </div>
+          <span class="project-card__arrow">→</span>
+        </a>
+
+        <!-- Project Card 5 — Campaign -->
+        <a href="project-template.html" class="project-card reveal">
+          <span class="project-card__number">05</span>
+          <div class="project-card__info">
+            <h3 class="project-card__title">Project</h3>
+            <p class="project-card__meta">description &mdash; 2025</p>
+          </div>
+          <span class="project-card__arrow">→</span>
+        </a>
+
+      </div><!-- end .projects__list -->
+
+    </div>
+  </section>
+  <!-- END PROJECTS -->
+
+
+  <!-- =====================================================
+       CONTACT SECTION
+       ===================================================== -->
+  <section class="contact section section--alt" id="contact">
+    <div class="container">
+
+      <!-- Decorative background text — remove if preferred -->
+      <!-- Replace "HELLO" with any word -->
+      <div class="contact__bg-text" aria-hidden="true">Hello</div>
+
+      <!-- Label -->
+      <p class="text-label contact__label reveal">Get in Touch</p>
+
+      <!-- Heading — replace with your own line -->
+      <h2 class="text-heading contact__heading reveal">
+        Let's Work<br>Together
+      </h2>
+
+      <!-- Short body text — replace later -->
+      <p class="text-body contact__body reveal">
+        Whether you have a project in mind, want to collaborate, or just want
+        to talk design — I am always open to a conversation.
+      </p>
+
+      <!-- Email — replace with your actual email -->
+      <div class="contact__links reveal">
+        <a href="mailto:noureddine.mazzene@gmail.com" class="contact__email">
+          noureddine.mazzene@gmail.com
+        </a>
+      </div>
+
+      <!-- Social links — replace hrefs with your actual profiles -->
+      <div class="contact__socials reveal">
+        <!-- Add, remove, or rename links as needed -->
+        <a href="https://www.instagram.com/rocmazz/" class="contact__social-link" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/noureddine-mazzene-071698366/" class="contact__social-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/noureddmazzene" class="contact__social-link" target="_blank" rel="noopener">Behance</a>
+        <!-- <a href="#" class="contact__social-link" target="_blank" rel="noopener">Dribbble</a> -->
+      </div>
+
+    </div>
+  </section>
+  <!-- END CONTACT -->
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+
+        <!-- Copyright — replace "Your Name" and update year if needed -->
+        <p class="footer__copy">
+          &copy; 2025 Noureddine Mazzene. All rights reserved.
+        </p>
+
+        <!-- Back to top button — triggers JS scroll -->
+        <span class="footer__back-top">Back to Top ↑</span>
+
+      </div>
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- JavaScript — loaded at end of body for performance -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

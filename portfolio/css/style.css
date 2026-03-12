@@ -1,0 +1,1055 @@
+/* ============================================================
+   PORTFOLIO — style.css
+   ============================================================
+   Table of Contents:
+   01. CSS Variables (colors, fonts, spacing)
+   02. Reset & Base
+   03. Typography
+   04. Layout Utilities
+   05. Header & Navigation
+   06. Hero Section
+   07. About Section
+   08. Projects Section
+   09. Contact Section
+   10. Footer
+   11. Project Detail Page
+   12. Animations
+   13. Responsive Styles
+   ============================================================ */
+
+
+/* ============================================================
+   01. CSS VARIABLES
+   — Edit colors and fonts here to restyle the whole site
+   ============================================================ */
+:root {
+  /* Colors — swap these to retheme easily */
+  --color-bg:           #0a0a0a;   /* main background */
+  --color-bg-alt:       #111111;   /* slightly lighter bg for alternating sections */
+  --color-surface:      #161616;   /* card / surface backgrounds */
+  --color-border:       #222222;   /* subtle borders */
+  --color-text:         #f0f0f0;   /* primary text */
+  --color-text-muted:   #666666;   /* secondary / subdued text */
+  --color-accent:       #ffffff;   /* accent — currently pure white for high contrast */
+  --color-accent-dim:   #aaaaaa;   /* dimmer accent for hover states */
+
+  /* Typography — swap Google Font names here */
+  --font-display:  'Barlow Condensed', sans-serif;  /* bold display headings */
+  --font-body:     'DM Sans', sans-serif;            /* clean readable body */
+
+  /* Spacing scale */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   2rem;
+  --space-lg:   4rem;
+  --space-xl:   8rem;
+  --space-2xl: 12rem;
+
+  /* Max content width */
+  --max-width: 1280px;
+
+  /* Transition */
+  --transition: 0.3s ease;
+}
+
+
+/* ============================================================
+   02. RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+
+/* ============================================================
+   03. TYPOGRAPHY
+   — Heading scale inspired by editorial boldness
+   ============================================================ */
+
+/* Display heading — massive, dominant */
+.text-display {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Section headings */
+.text-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Sub-headings */
+.text-subheading {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Body text */
+.text-body {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+/* Eyebrow label — small caps label above a heading */
+.text-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+
+/* ============================================================
+   04. LAYOUT UTILITIES
+   ============================================================ */
+
+/* Inner container — centers and limits content width */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Generic section padding */
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* Alternating section background */
+.section--alt {
+  background-color: var(--color-bg-alt);
+}
+
+/* Horizontal divider line */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--space-md) 0;
+}
+
+/* Flex row with gap */
+.flex-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+/* Primary button — white fill */
+.btn--primary {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-accent-dim);
+}
+
+/* Ghost / outline button */
+.btn--ghost {
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-text);
+  color: var(--color-accent);
+}
+
+
+/* ============================================================
+   05. HEADER & NAVIGATION
+   ============================================================ */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 0;
+  /* Subtle glassmorphism on scroll — JS adds .header--scrolled */
+  transition: background-color var(--transition), padding var(--transition);
+}
+
+/* When the page is scrolled, JS adds this class */
+.header--scrolled {
+  background-color: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.9rem 0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Replace "Your Name" with your actual name or initials */
+.header__logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.header__logo span {
+  color: var(--color-text-muted);
+}
+
+/* Desktop nav links */
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.nav__link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+  position: relative;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width var(--transition);
+}
+
+.nav__link:hover {
+  color: var(--color-accent);
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* Hamburger menu button — visible on mobile only */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.nav__toggle span {
+  display: block;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: var(--transition);
+}
+
+/* Mobile nav open state */
+.nav__toggle.is-open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.nav__toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle.is-open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+
+/* ============================================================
+   06. HERO SECTION
+   — Full-height opening, editorial layout
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: var(--space-lg);
+  padding-top: 8rem; /* accounts for fixed header */
+  overflow: hidden;
+}
+
+/* Large background word — purely decorative, do not remove unless you want a cleaner look */
+.hero__bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 28vw, 24rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  /* Replace the word "PORTFOLIO" below in the HTML to change this */
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+/* Small label above the headline */
+.hero__label {
+  margin-bottom: var(--space-sm);
+}
+
+/* Main headline */
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+/* The highlighted word in the headline */
+.hero__title em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-accent);
+}
+
+.hero__description {
+  max-width: 480px;
+  margin-bottom: var(--space-md);
+}
+
+.hero__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Scroll indicator at bottom */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-text-muted);
+}
+
+
+/* ============================================================
+   07. ABOUT SECTION
+   ============================================================ */
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.about__left {
+  position: sticky;
+  top: 6rem; /* sticks when scrolling */
+}
+
+.about__heading {
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+/* Stats / facts row */
+.about__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.about__stat-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  /* Replace these numbers in the HTML */
+}
+
+.about__stat-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+.about__right p + p {
+  margin-top: var(--space-sm);
+}
+
+/* Skills / tools tags */
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+
+.about__tag {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  /* Add or remove tags in the HTML about section */
+}
+
+
+/* ============================================================
+   08. PROJECTS SECTION
+   ============================================================ */
+.projects__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Projects list — full width rows, editorial list style */
+.projects__list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Individual project card row */
+.project-card {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid var(--color-border);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover reveal — background fill */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-surface);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
+}
+
+.project-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Project number */
+.project-card__number {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.project-card:hover .project-card__number {
+  color: var(--color-accent);
+}
+
+.project-card__info {}
+
+/* Project title — gets big on hover */
+.project-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  transition: letter-spacing var(--transition);
+}
+
+.project-card:hover .project-card__title {
+  letter-spacing: 0.02em;
+}
+
+.project-card__meta {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+/* Arrow indicator */
+.project-card__arrow {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.project-card:hover .project-card__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ============================================================
+   09. CONTACT SECTION
+   ============================================================ */
+.contact {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background text */
+.contact__bg-text {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 16rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact__label {
+  margin-bottom: var(--space-sm);
+}
+
+.contact__heading {
+  margin-bottom: var(--space-md);
+}
+
+.contact__body {
+  max-width: 540px;
+  margin: 0 auto var(--space-lg);
+}
+
+.contact__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Email link — large and direct */
+.contact__email {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  transition: color var(--transition);
+}
+
+.contact__email:hover {
+  color: var(--color-text-muted);
+}
+
+/* Social links row */
+.contact__socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
+}
+
+.contact__social-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.contact__social-link:hover {
+  color: var(--color-accent);
+}
+
+
+/* ============================================================
+   10. FOOTER
+   ============================================================ */
+.footer {
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__copy {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+}
+
+.footer__back-top {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+  cursor: pointer;
+}
+
+.footer__back-top:hover {
+  color: var(--color-accent);
+}
+
+
+/* ============================================================
+   11. PROJECT DETAIL PAGE
+   — Template for individual project pages
+   ============================================================ */
+
+/* Hero section for project detail */
+.project-hero {
+  padding-top: 8rem;
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-hero__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+  margin-bottom: var(--space-lg);
+}
+
+.project-hero__back:hover {
+  color: var(--color-accent);
+}
+
+.project-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.project-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  margin-bottom: var(--space-md);
+}
+
+.project-hero__description {
+  max-width: 600px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+/* Project info grid — details sidebar */
+.project-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-info__item {}
+
+.project-info__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.project-info__value {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Image placeholders */
+.project-visuals {
+  padding: var(--space-lg) 0;
+}
+
+.project-visual-full {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+/* Two-column image grid */
+.project-visual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.project-visual-half {
+  aspect-ratio: 4/3;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Text content sections for project page */
+.project-content {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-content__section + .project-content__section {
+  margin-top: var(--space-lg);
+}
+
+.project-content__heading {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.project-content__body p + p {
+  margin-top: var(--space-sm);
+}
+
+/* Next project link at bottom */
+.project-next {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-next__label {
+  margin-bottom: var(--space-sm);
+}
+
+.project-next__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  transition: gap var(--transition);
+}
+
+.project-next__link:hover {
+  gap: var(--space-md);
+}
+
+
+/* ============================================================
+   12. ANIMATIONS
+   ============================================================ */
+
+/* Fade-in-up — used by JS on scroll reveal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elements start invisible — JS removes .is-hidden when in viewport */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children — add delay increments to child elements */
+.reveal-stagger > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.32s; }
+
+
+/* ============================================================
+   13. RESPONSIVE STYLES
+   ============================================================ */
+
+/* Tablet — max 1024px */
+@media (max-width: 1024px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .about__left {
+    position: static;
+  }
+
+  .project-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* Mobile — max 768px */
+@media (max-width: 768px) {
+
+  /* Show hamburger, hide desktop nav */
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    background-color: var(--color-bg-alt);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--space-xl) var(--space-lg);
+    gap: var(--space-md);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 90;
+    border-left: 1px solid var(--color-border);
+  }
+
+  .nav__list.is-open {
+    transform: translateX(0);
+  }
+
+  .nav__link {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* Project cards — stack on mobile */
+  .project-card {
+    grid-template-columns: 50px 1fr auto;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+  }
+
+  .project-card__arrow {
+    display: none;
+  }
+
+  .projects__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .contact__heading {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+
+  /* Project detail mobile */
+  .project-visual-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  :root {
+    --space-xl: 5rem;
+    --space-2xl: 8rem;
+  }
+}
+
+/* Small mobile — max 480px */
+@media (max-width: 480px) {
+  .hero__cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    grid-template-columns: 1fr;
+  }
+}
